@@ -8,7 +8,6 @@ export type MethodDecoratorOverrideFn = (decorators: MethodDecorator[]) => Metho
 declare const crudResolversMap: {
     Loan: typeof crudResolvers.LoanCrudResolver;
     Book: typeof crudResolvers.BookCrudResolver;
-    Role: typeof crudResolvers.RoleCrudResolver;
     User: typeof crudResolvers.UserCrudResolver;
     Account: typeof crudResolvers.AccountCrudResolver;
     Session: typeof crudResolvers.SessionCrudResolver;
@@ -39,7 +38,6 @@ export declare function applyArgsTypesEnhanceMap(argsTypesEnhanceMap: ArgsTypesE
 declare const relationResolversMap: {
     Loan: typeof relationResolvers.LoanRelationsResolver;
     Book: typeof relationResolvers.BookRelationsResolver;
-    Role: typeof relationResolvers.RoleRelationsResolver;
     User: typeof relationResolvers.UserRelationsResolver;
     Account: typeof relationResolvers.AccountRelationsResolver;
     Session: typeof relationResolvers.SessionRelationsResolver;

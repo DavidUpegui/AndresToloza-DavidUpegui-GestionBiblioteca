@@ -4,7 +4,7 @@ export declare class UserCreateManyInput {
     email: string;
     emailVerified?: Date | undefined;
     image?: string | undefined;
-    roleId: string;
+    role?: "ADMIN" | "USER" | undefined;
     createdAt?: Date | undefined;
     updatedAt?: Date | undefined;
 }

@@ -5,7 +5,6 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const Account_1 = require("../../../models/Account");
 const Loan_1 = require("../../../models/Loan");
-const Role_1 = require("../../../models/Role");
 const Session_1 = require("../../../models/Session");
 const User_1 = require("../../../models/User");
 const UserAccountsArgs_1 = require("./args/UserAccountsArgs");
@@ -13,16 +12,6 @@ const UserLoansArgs_1 = require("./args/UserLoansArgs");
 const UserSessionsArgs_1 = require("./args/UserSessionsArgs");
 const helpers_1 = require("../../../helpers");
 let UserRelationsResolver = class UserRelationsResolver {
-    async role(user, ctx, info) {
-        const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
-        return (0, helpers_1.getPrismaFromContext)(ctx).user.findUniqueOrThrow({
-            where: {
-                id: user.id,
-            },
-        }).role({
-            ...(_count && (0, helpers_1.transformCountFieldIntoSelectRelationsCount)(_count)),
-        });
-    }
     async accounts(user, ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).user.findUniqueOrThrow({
@@ -58,17 +47,6 @@ let UserRelationsResolver = class UserRelationsResolver {
     }
 };
 exports.UserRelationsResolver = UserRelationsResolver;
-tslib_1.__decorate([
-    TypeGraphQL.FieldResolver(_type => Role_1.Role, {
-        nullable: false
-    }),
-    tslib_1.__param(0, TypeGraphQL.Root()),
-    tslib_1.__param(1, TypeGraphQL.Ctx()),
-    tslib_1.__param(2, TypeGraphQL.Info()),
-    tslib_1.__metadata("design:type", Function),
-    tslib_1.__metadata("design:paramtypes", [User_1.User, Object, Object]),
-    tslib_1.__metadata("design:returntype", Promise)
-], UserRelationsResolver.prototype, "role", null);
 tslib_1.__decorate([
     TypeGraphQL.FieldResolver(_type => [Account_1.Account], {
         nullable: false

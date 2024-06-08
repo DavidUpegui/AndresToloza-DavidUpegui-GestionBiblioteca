@@ -7,8 +7,8 @@ const AccountUpdateManyWithoutUserNestedInput_1 = require("../inputs/AccountUpda
 const DateTimeFieldUpdateOperationsInput_1 = require("../inputs/DateTimeFieldUpdateOperationsInput");
 const LoanUpdateManyWithoutUserNestedInput_1 = require("../inputs/LoanUpdateManyWithoutUserNestedInput");
 const NullableDateTimeFieldUpdateOperationsInput_1 = require("../inputs/NullableDateTimeFieldUpdateOperationsInput");
+const NullableEnumEnum_RoleNameFieldUpdateOperationsInput_1 = require("../inputs/NullableEnumEnum_RoleNameFieldUpdateOperationsInput");
 const NullableStringFieldUpdateOperationsInput_1 = require("../inputs/NullableStringFieldUpdateOperationsInput");
-const RoleUpdateOneRequiredWithoutUsersNestedInput_1 = require("../inputs/RoleUpdateOneRequiredWithoutUsersNestedInput");
 const StringFieldUpdateOperationsInput_1 = require("../inputs/StringFieldUpdateOperationsInput");
 let UserUpdateWithoutSessionsInput = class UserUpdateWithoutSessionsInput {
 };
@@ -44,6 +44,12 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", NullableStringFieldUpdateOperationsInput_1.NullableStringFieldUpdateOperationsInput)
 ], UserUpdateWithoutSessionsInput.prototype, "image", void 0);
 tslib_1.__decorate([
+    TypeGraphQL.Field(_type => NullableEnumEnum_RoleNameFieldUpdateOperationsInput_1.NullableEnumEnum_RoleNameFieldUpdateOperationsInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", NullableEnumEnum_RoleNameFieldUpdateOperationsInput_1.NullableEnumEnum_RoleNameFieldUpdateOperationsInput)
+], UserUpdateWithoutSessionsInput.prototype, "role", void 0);
+tslib_1.__decorate([
     TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput_1.DateTimeFieldUpdateOperationsInput, {
         nullable: true
     }),
@@ -55,12 +61,6 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", DateTimeFieldUpdateOperationsInput_1.DateTimeFieldUpdateOperationsInput)
 ], UserUpdateWithoutSessionsInput.prototype, "updatedAt", void 0);
-tslib_1.__decorate([
-    TypeGraphQL.Field(_type => RoleUpdateOneRequiredWithoutUsersNestedInput_1.RoleUpdateOneRequiredWithoutUsersNestedInput, {
-        nullable: true
-    }),
-    tslib_1.__metadata("design:type", RoleUpdateOneRequiredWithoutUsersNestedInput_1.RoleUpdateOneRequiredWithoutUsersNestedInput)
-], UserUpdateWithoutSessionsInput.prototype, "role", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => AccountUpdateManyWithoutUserNestedInput_1.AccountUpdateManyWithoutUserNestedInput, {
         nullable: true

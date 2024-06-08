@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
+const Enum_RoleName_1 = require("../enums/Enum_RoleName");
 const UserCount_1 = require("../resolvers/outputs/UserCount");
 let User = class User {
 };
@@ -38,11 +39,11 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", String)
 ], User.prototype, "image", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => String, {
-        nullable: false
+    TypeGraphQL.Field(_type => Enum_RoleName_1.Enum_RoleName, {
+        nullable: true
     }),
     tslib_1.__metadata("design:type", String)
-], User.prototype, "roleId", void 0);
+], User.prototype, "role", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => Date, {
         nullable: false

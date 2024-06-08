@@ -5,7 +5,7 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const AccountCreateNestedManyWithoutUserInput_1 = require("../inputs/AccountCreateNestedManyWithoutUserInput");
 const LoanCreateNestedManyWithoutUserInput_1 = require("../inputs/LoanCreateNestedManyWithoutUserInput");
-const RoleCreateNestedOneWithoutUsersInput_1 = require("../inputs/RoleCreateNestedOneWithoutUsersInput");
+const Enum_RoleName_1 = require("../../enums/Enum_RoleName");
 let UserCreateWithoutSessionsInput = class UserCreateWithoutSessionsInput {
 };
 exports.UserCreateWithoutSessionsInput = UserCreateWithoutSessionsInput;
@@ -40,6 +40,12 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", String)
 ], UserCreateWithoutSessionsInput.prototype, "image", void 0);
 tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Enum_RoleName_1.Enum_RoleName, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", String)
+], UserCreateWithoutSessionsInput.prototype, "role", void 0);
+tslib_1.__decorate([
     TypeGraphQL.Field(_type => Date, {
         nullable: true
     }),
@@ -51,12 +57,6 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", Date)
 ], UserCreateWithoutSessionsInput.prototype, "updatedAt", void 0);
-tslib_1.__decorate([
-    TypeGraphQL.Field(_type => RoleCreateNestedOneWithoutUsersInput_1.RoleCreateNestedOneWithoutUsersInput, {
-        nullable: false
-    }),
-    tslib_1.__metadata("design:type", RoleCreateNestedOneWithoutUsersInput_1.RoleCreateNestedOneWithoutUsersInput)
-], UserCreateWithoutSessionsInput.prototype, "role", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => AccountCreateNestedManyWithoutUserInput_1.AccountCreateNestedManyWithoutUserInput, {
         nullable: true

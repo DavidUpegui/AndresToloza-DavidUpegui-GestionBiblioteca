@@ -5,6 +5,7 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const DateTimeNullableWithAggregatesFilter_1 = require("../inputs/DateTimeNullableWithAggregatesFilter");
 const DateTimeWithAggregatesFilter_1 = require("../inputs/DateTimeWithAggregatesFilter");
+const EnumEnum_RoleNameNullableWithAggregatesFilter_1 = require("../inputs/EnumEnum_RoleNameNullableWithAggregatesFilter");
 const StringNullableWithAggregatesFilter_1 = require("../inputs/StringNullableWithAggregatesFilter");
 const StringWithAggregatesFilter_1 = require("../inputs/StringWithAggregatesFilter");
 let UserScalarWhereWithAggregatesInput = class UserScalarWhereWithAggregatesInput {
@@ -59,11 +60,11 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", StringNullableWithAggregatesFilter_1.StringNullableWithAggregatesFilter)
 ], UserScalarWhereWithAggregatesInput.prototype, "image", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => StringWithAggregatesFilter_1.StringWithAggregatesFilter, {
+    TypeGraphQL.Field(_type => EnumEnum_RoleNameNullableWithAggregatesFilter_1.EnumEnum_RoleNameNullableWithAggregatesFilter, {
         nullable: true
     }),
-    tslib_1.__metadata("design:type", StringWithAggregatesFilter_1.StringWithAggregatesFilter)
-], UserScalarWhereWithAggregatesInput.prototype, "roleId", void 0);
+    tslib_1.__metadata("design:type", EnumEnum_RoleNameNullableWithAggregatesFilter_1.EnumEnum_RoleNameNullableWithAggregatesFilter)
+], UserScalarWhereWithAggregatesInput.prototype, "role", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => DateTimeWithAggregatesFilter_1.DateTimeWithAggregatesFilter, {
         nullable: true

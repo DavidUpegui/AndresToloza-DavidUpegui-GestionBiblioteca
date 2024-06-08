@@ -9,7 +9,7 @@ const options: NextAuthOptions = {
     async session({ session, user }) {
         const usuario = await prisma.user.findUnique({
           where: {
-            id: user.id,
+            email: user.email,
           },
           select: {
             role: true,
@@ -28,6 +28,8 @@ const options: NextAuthOptions = {
     },
 },
 
+  
+
   providers: [
     Auth0Provider({
       wellKnown: `https://${process.env.AUTH0_DOMAIN}/`,
@@ -35,23 +37,7 @@ const options: NextAuthOptions = {
       authorization: `https://${process.env.AUTH0_DOMAIN}/authorize?response_type=code&prompt=login`,
       clientId: `${process.env.AUTH0_CLIENT_ID}`,
       clientSecret: `${process.env.AUTH0_CLIENT_SECRET}`,
-      async profile(profile) {
-
-        const user = await prisma.user.findFirst({
-          where: {
-            email: profile.email,
-          },
-        });
-        console.log(profile);
-        
-        console.log(user)
-        return {// agregar el campo role
-          id: profile.sub,
-          name: profile.name,
-          email: profile.email,
-          role: profile.role ? profile.role : 'USER',
-        };
-      }
+      
     }),
   ],
   secret: process.env.AUTH0_CLIENT_SECRET,

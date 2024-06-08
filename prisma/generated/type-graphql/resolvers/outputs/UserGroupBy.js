@@ -6,6 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const UserCountAggregate_1 = require("../outputs/UserCountAggregate");
 const UserMaxAggregate_1 = require("../outputs/UserMaxAggregate");
 const UserMinAggregate_1 = require("../outputs/UserMinAggregate");
+const Enum_RoleName_1 = require("../../enums/Enum_RoleName");
 let UserGroupBy = class UserGroupBy {
 };
 exports.UserGroupBy = UserGroupBy;
@@ -40,11 +41,11 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", String)
 ], UserGroupBy.prototype, "image", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => String, {
-        nullable: false
+    TypeGraphQL.Field(_type => Enum_RoleName_1.Enum_RoleName, {
+        nullable: true
     }),
     tslib_1.__metadata("design:type", String)
-], UserGroupBy.prototype, "roleId", void 0);
+], UserGroupBy.prototype, "role", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => Date, {
         nullable: false

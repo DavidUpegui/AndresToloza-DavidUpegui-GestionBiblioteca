@@ -4,7 +4,7 @@ export declare class UserMinAggregate {
     email: string | null;
     emailVerified: Date | null;
     image: string | null;
-    roleId: string | null;
+    role: "ADMIN" | "USER" | null;
     createdAt: Date | null;
     updatedAt: Date | null;
 }

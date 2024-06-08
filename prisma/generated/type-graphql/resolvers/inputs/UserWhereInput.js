@@ -6,8 +6,8 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const AccountListRelationFilter_1 = require("../inputs/AccountListRelationFilter");
 const DateTimeFilter_1 = require("../inputs/DateTimeFilter");
 const DateTimeNullableFilter_1 = require("../inputs/DateTimeNullableFilter");
+const EnumEnum_RoleNameNullableFilter_1 = require("../inputs/EnumEnum_RoleNameNullableFilter");
 const LoanListRelationFilter_1 = require("../inputs/LoanListRelationFilter");
-const RoleRelationFilter_1 = require("../inputs/RoleRelationFilter");
 const SessionListRelationFilter_1 = require("../inputs/SessionListRelationFilter");
 const StringFilter_1 = require("../inputs/StringFilter");
 const StringNullableFilter_1 = require("../inputs/StringNullableFilter");
@@ -63,11 +63,11 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", StringNullableFilter_1.StringNullableFilter)
 ], UserWhereInput.prototype, "image", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => StringFilter_1.StringFilter, {
+    TypeGraphQL.Field(_type => EnumEnum_RoleNameNullableFilter_1.EnumEnum_RoleNameNullableFilter, {
         nullable: true
     }),
-    tslib_1.__metadata("design:type", StringFilter_1.StringFilter)
-], UserWhereInput.prototype, "roleId", void 0);
+    tslib_1.__metadata("design:type", EnumEnum_RoleNameNullableFilter_1.EnumEnum_RoleNameNullableFilter)
+], UserWhereInput.prototype, "role", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => DateTimeFilter_1.DateTimeFilter, {
         nullable: true
@@ -80,12 +80,6 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", DateTimeFilter_1.DateTimeFilter)
 ], UserWhereInput.prototype, "updatedAt", void 0);
-tslib_1.__decorate([
-    TypeGraphQL.Field(_type => RoleRelationFilter_1.RoleRelationFilter, {
-        nullable: true
-    }),
-    tslib_1.__metadata("design:type", RoleRelationFilter_1.RoleRelationFilter)
-], UserWhereInput.prototype, "role", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => AccountListRelationFilter_1.AccountListRelationFilter, {
         nullable: true

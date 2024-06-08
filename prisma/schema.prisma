@@ -40,15 +40,6 @@ enum Enum_RoleName {
   USER
 }
 
-model Role {
-  id   String        @id @default(cuid())
-  name Enum_RoleName @unique
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  users     User[]
-}
-
 
 
 
@@ -67,8 +58,7 @@ model User {
   email         String    @unique
   emailVerified DateTime?
   image         String?
-  role          Role      @relation(fields: [roleId], references: [id])
-  roleId        String
+  role          Enum_RoleName?     @default(USER)
   accounts      Account[]
   sessions      Session[]
   createdAt     DateTime  @default(now())

@@ -2,8 +2,8 @@ import { AccountUpdateManyWithoutUserNestedInput } from "../inputs/AccountUpdate
 import { DateTimeFieldUpdateOperationsInput } from "../inputs/DateTimeFieldUpdateOperationsInput";
 import { LoanUpdateManyWithoutUserNestedInput } from "../inputs/LoanUpdateManyWithoutUserNestedInput";
 import { NullableDateTimeFieldUpdateOperationsInput } from "../inputs/NullableDateTimeFieldUpdateOperationsInput";
+import { NullableEnumEnum_RoleNameFieldUpdateOperationsInput } from "../inputs/NullableEnumEnum_RoleNameFieldUpdateOperationsInput";
 import { NullableStringFieldUpdateOperationsInput } from "../inputs/NullableStringFieldUpdateOperationsInput";
-import { RoleUpdateOneRequiredWithoutUsersNestedInput } from "../inputs/RoleUpdateOneRequiredWithoutUsersNestedInput";
 import { SessionUpdateManyWithoutUserNestedInput } from "../inputs/SessionUpdateManyWithoutUserNestedInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
 export declare class UserUpdateInput {
@@ -12,9 +12,9 @@ export declare class UserUpdateInput {
     email?: StringFieldUpdateOperationsInput | undefined;
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | undefined;
     image?: NullableStringFieldUpdateOperationsInput | undefined;
+    role?: NullableEnumEnum_RoleNameFieldUpdateOperationsInput | undefined;
     createdAt?: DateTimeFieldUpdateOperationsInput | undefined;
     updatedAt?: DateTimeFieldUpdateOperationsInput | undefined;
-    role?: RoleUpdateOneRequiredWithoutUsersNestedInput | undefined;
     accounts?: AccountUpdateManyWithoutUserNestedInput | undefined;
     sessions?: SessionUpdateManyWithoutUserNestedInput | undefined;
     loans?: LoanUpdateManyWithoutUserNestedInput | undefined;

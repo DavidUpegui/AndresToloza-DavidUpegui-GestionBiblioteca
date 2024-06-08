@@ -7,7 +7,7 @@ export declare class UserGroupBy {
     email: string;
     emailVerified: Date | null;
     image: string | null;
-    roleId: string;
+    role: "ADMIN" | "USER" | null;
     createdAt: Date;
     updatedAt: Date;
     _count: UserCountAggregate | null;

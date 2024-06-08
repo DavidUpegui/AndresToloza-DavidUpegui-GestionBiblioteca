@@ -1,14 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.VerificationToken = exports.User = exports.Session = exports.Role = exports.Loan = exports.Book = exports.Account = void 0;
+exports.VerificationToken = exports.User = exports.Session = exports.Loan = exports.Book = exports.Account = void 0;
 var Account_1 = require("./Account");
 Object.defineProperty(exports, "Account", { enumerable: true, get: function () { return Account_1.Account; } });
 var Book_1 = require("./Book");
 Object.defineProperty(exports, "Book", { enumerable: true, get: function () { return Book_1.Book; } });
 var Loan_1 = require("./Loan");
 Object.defineProperty(exports, "Loan", { enumerable: true, get: function () { return Loan_1.Loan; } });
-var Role_1 = require("./Role");
-Object.defineProperty(exports, "Role", { enumerable: true, get: function () { return Role_1.Role; } });
 var Session_1 = require("./Session");
 Object.defineProperty(exports, "Session", { enumerable: true, get: function () { return Session_1.Session; } });
 var User_1 = require("./User");

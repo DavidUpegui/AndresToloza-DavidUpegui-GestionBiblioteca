@@ -1,6 +1,5 @@
 import { Account } from "../models/Account";
 import { Loan } from "../models/Loan";
-import { Role } from "../models/Role";
 import { Session } from "../models/Session";
 import { UserCount } from "../resolvers/outputs/UserCount";
 export declare class User {
@@ -9,8 +8,7 @@ export declare class User {
     email: string;
     emailVerified?: Date | null;
     image?: string | null;
-    role?: Role;
-    roleId: string;
+    role?: "ADMIN" | "USER" | null;
     accounts?: Account[];
     sessions?: Session[];
     createdAt: Date;

@@ -4,7 +4,6 @@ const tslib_1 = require("tslib");
 tslib_1.__exportStar(require("./Account/args"), exports);
 tslib_1.__exportStar(require("./Book/args"), exports);
 tslib_1.__exportStar(require("./Loan/args"), exports);
-tslib_1.__exportStar(require("./Role/args"), exports);
 tslib_1.__exportStar(require("./Session/args"), exports);
 tslib_1.__exportStar(require("./User/args"), exports);
 tslib_1.__exportStar(require("./VerificationToken/args"), exports);

@@ -5,7 +5,6 @@ export { LoanScalarFieldEnum } from "./LoanScalarFieldEnum";
 export { LoanStatus } from "./LoanStatus";
 export { NullsOrder } from "./NullsOrder";
 export { QueryMode } from "./QueryMode";
-export { RoleScalarFieldEnum } from "./RoleScalarFieldEnum";
 export { SessionScalarFieldEnum } from "./SessionScalarFieldEnum";
 export { SortOrder } from "./SortOrder";
 export { TransactionIsolationLevel } from "./TransactionIsolationLevel";

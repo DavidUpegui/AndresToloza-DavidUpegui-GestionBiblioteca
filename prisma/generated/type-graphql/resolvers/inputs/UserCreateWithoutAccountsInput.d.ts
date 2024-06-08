@@ -1,5 +1,4 @@
 import { LoanCreateNestedManyWithoutUserInput } from "../inputs/LoanCreateNestedManyWithoutUserInput";
-import { RoleCreateNestedOneWithoutUsersInput } from "../inputs/RoleCreateNestedOneWithoutUsersInput";
 import { SessionCreateNestedManyWithoutUserInput } from "../inputs/SessionCreateNestedManyWithoutUserInput";
 export declare class UserCreateWithoutAccountsInput {
     id?: string | undefined;
@@ -7,9 +6,9 @@ export declare class UserCreateWithoutAccountsInput {
     email: string;
     emailVerified?: Date | undefined;
     image?: string | undefined;
+    role?: "ADMIN" | "USER" | undefined;
     createdAt?: Date | undefined;
     updatedAt?: Date | undefined;
-    role: RoleCreateNestedOneWithoutUsersInput;
     sessions?: SessionCreateNestedManyWithoutUserInput | undefined;
     loans?: LoanCreateNestedManyWithoutUserInput | undefined;
 }
