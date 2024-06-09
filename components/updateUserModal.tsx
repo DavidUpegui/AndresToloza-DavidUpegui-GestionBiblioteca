@@ -1,5 +1,5 @@
-import { ComboboxUsers } from "../../components/user-combobox/combo";
-import { Button } from "../../components/ui/button";
+import { ComboboxUsers } from "./user-combobox/combo";
+import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
 import {
   Dialog,
@@ -9,21 +9,21 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../../components/ui/dialog";
-import { Input } from "../../components/ui/input";
-import { Label } from "../../components/ui/label";
+} from "./ui/dialog";
+import { Input } from "./ui/input";
+import { Label } from "./ui/label";
 import React, { useState } from "react";
-import { ComboboxBooks } from "../../components/book-combobox/combo";
-import { CREATE_LOAN } from "../../graphql/mutations/loan";
+import { ComboboxBooks } from "./book-combobox/combo";
+import { CREATE_LOAN } from "../graphql/mutations/loan";
 import { useMutation } from "@apollo/client";
-import { useToast } from "../../components/ui/use-toast";
-import { Toaster } from "../../components/ui/toaster";
+import { useToast } from "./ui/use-toast";
+import { Toaster } from "./ui/toaster";
 import classNames from "classnames";
 import { Spinner } from "@radix-ui/themes";
 import { User } from "@prisma/client";
-import { ComboboxRoles } from "../../components/role-combobox";
-import { UPDATE_USER_ROLE } from "../../graphql/mutations/user";
-import { GET_USERS } from "../../graphql/queries/user";
+import { ComboboxRoles } from "./role-combobox";
+import { UPDATE_USER_ROLE } from "../graphql/mutations/user";
+import { GET_USERS } from "../graphql/queries/user";
 
 function UpdateUserDialog({ userProp }: { userProp: User }) {
   console.log(userProp);
@@ -114,4 +114,4 @@ function UpdateUserDialog({ userProp }: { userProp: User }) {
   );
 }
 
-export { UpdateUserDialog };
+export default UpdateUserDialog ;

@@ -13,7 +13,7 @@ import {
   TableHeader,
   TableRow,
 } from "../../../components/ui/table";
-import { CreatLoanDialog } from "../createLoanModal";
+import  CreatLoanDialog  from "../createLoanModal";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import { Button } from "@/components/ui/button";

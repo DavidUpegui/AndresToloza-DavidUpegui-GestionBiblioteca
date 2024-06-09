@@ -142,4 +142,4 @@ function CreatLoanDialog() {
   );
 }
 
-export { CreatLoanDialog };
+export default CreatLoanDialog ;

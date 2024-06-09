@@ -17,7 +17,7 @@ import {
   TableHeader,
   TableRow,
 } from "../../components/ui/table";
-import { UpdateUserDialog } from "./updateUserModal";
+import UpdateUserDialog from "../../components/updateUserModal";
 import { GET_USERS } from "../../graphql/queries/user";
 import { UsersQuery } from "../../types/ExtendedUser";
 import { useRouter } from "next/navigation";
@@ -53,7 +53,7 @@ const LoansTable: React.FC = () => {
   }
 
   const user: UserWithRole | undefined = session?.user;
-  const role = user?.role;
+  const role = user?.role || "";
 
   if (role !== "ADMIN") {
     return (

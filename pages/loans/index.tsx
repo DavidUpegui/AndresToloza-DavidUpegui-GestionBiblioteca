@@ -17,7 +17,7 @@ import {
   TableHeader,
   TableRow,
 } from "../../components/ui/table";
-import { CreatLoanDialog } from "./createLoanModal";
+import  CreatLoanDialog  from "./createLoanModal";
 import { UPDATE_LOAN } from "@/graphql/mutations/loan";
 import { useToast } from "@/components/ui/use-toast";
 import { useSession } from "next-auth/react";

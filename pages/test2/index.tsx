@@ -32,7 +32,7 @@ export function ProfilePage() {
 
   // Acceder a los datos del usuario desde la sesión
 const { user } = session;
-const role = session?.user?.role;
+// const role = session?.user?.role;
 return (
     <div>
         <h1>Perfil de Usuario</h1>
@@ -40,7 +40,7 @@ return (
             <>
                 <p>Nombre: {user.name}</p>
                 <p>Email: {user.email}</p>
-                <p>Rol: {role}</p>
+                {/* <p>Rol: {role}</p> */}
                 <button onClick={() => signOut({ callbackUrl: 'http://localhost:3000/' })}>
                   Logout
                 </button>
