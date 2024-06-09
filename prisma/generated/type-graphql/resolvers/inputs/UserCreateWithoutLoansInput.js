@@ -4,6 +4,8 @@ exports.UserCreateWithoutLoansInput = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const AccountCreateNestedManyWithoutUserInput_1 = require("../inputs/AccountCreateNestedManyWithoutUserInput");
+const BookCreateNestedManyWithoutCreatedByInput_1 = require("../inputs/BookCreateNestedManyWithoutCreatedByInput");
+const LoanCreateNestedManyWithoutCreatedByInput_1 = require("../inputs/LoanCreateNestedManyWithoutCreatedByInput");
 const SessionCreateNestedManyWithoutUserInput_1 = require("../inputs/SessionCreateNestedManyWithoutUserInput");
 const Enum_RoleName_1 = require("../../enums/Enum_RoleName");
 let UserCreateWithoutLoansInput = class UserCreateWithoutLoansInput {
@@ -69,6 +71,18 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", SessionCreateNestedManyWithoutUserInput_1.SessionCreateNestedManyWithoutUserInput)
 ], UserCreateWithoutLoansInput.prototype, "sessions", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => LoanCreateNestedManyWithoutCreatedByInput_1.LoanCreateNestedManyWithoutCreatedByInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", LoanCreateNestedManyWithoutCreatedByInput_1.LoanCreateNestedManyWithoutCreatedByInput)
+], UserCreateWithoutLoansInput.prototype, "createdLoans", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => BookCreateNestedManyWithoutCreatedByInput_1.BookCreateNestedManyWithoutCreatedByInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", BookCreateNestedManyWithoutCreatedByInput_1.BookCreateNestedManyWithoutCreatedByInput)
+], UserCreateWithoutLoansInput.prototype, "createdBooks", void 0);
 exports.UserCreateWithoutLoansInput = UserCreateWithoutLoansInput = tslib_1.__decorate([
     TypeGraphQL.InputType("UserCreateWithoutLoansInput", {})
 ], UserCreateWithoutLoansInput);

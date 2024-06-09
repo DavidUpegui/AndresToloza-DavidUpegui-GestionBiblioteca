@@ -11,6 +11,7 @@ export declare class BookOrderByWithAggregationInput {
     category?: "asc" | "desc" | undefined;
     image?: "asc" | "desc" | undefined;
     quantityAvaiable?: "asc" | "desc" | undefined;
+    userId?: "asc" | "desc" | undefined;
     _count?: BookCountOrderByAggregateInput | undefined;
     _avg?: BookAvgOrderByAggregateInput | undefined;
     _max?: BookMaxOrderByAggregateInput | undefined;

@@ -7,4 +7,5 @@ export declare class LoanOrderByWithRelationInput {
     status?: "asc" | "desc" | undefined;
     user?: UserOrderByWithRelationInput | undefined;
     book?: BookOrderByWithRelationInput | undefined;
+    createdBy?: UserOrderByWithRelationInput | undefined;
 }

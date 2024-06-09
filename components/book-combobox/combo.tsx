@@ -12,15 +12,21 @@ import {
   CommandList,
 } from "../ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { User } from "../../prisma/generated/type-graphql/models/User";
 import { useQuery } from "@apollo/client";
 import { BooksQuery } from "../../types/ExtendedBooks";
-import { GET_BOOKS } from "../../graphql/queries/book";
+import { GET_BOOKS, GET_BOOKS_BY_FILTER } from "../../graphql/queries/book";
 import { Book } from "@prisma/client";
 
-export function ComboboxBooks({setSelectedBook: setBook, selectedBook: bookSelected}) {
-  const { data, loading, error } = useQuery<BooksQuery>(GET_BOOKS, {
+export function ComboboxBooks({setSelectedBook: setBook, selectedBook: bookSelected}: {setSelectedBook: React.Dispatch<React.SetStateAction<Book | null>>, selectedBook: Book | null}) {
+  const { data, loading, error } = useQuery<BooksQuery>(GET_BOOKS_BY_FILTER, {
     fetchPolicy: "cache-and-network",
+    variables: {
+      where: {
+        quantityAvaiable: {
+          notIn: 0
+        }
+      }
+    }
   });
 
   const [open, setOpen] = React.useState(false);

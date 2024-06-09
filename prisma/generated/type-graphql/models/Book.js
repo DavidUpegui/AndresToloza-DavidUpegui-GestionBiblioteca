@@ -50,6 +50,12 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", Number)
 ], Book.prototype, "quantityAvaiable", void 0);
 tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, {
+        nullable: false
+    }),
+    tslib_1.__metadata("design:type", String)
+], Book.prototype, "userId", void 0);
+tslib_1.__decorate([
     TypeGraphQL.Field(_type => BookCount_1.BookCount, {
         nullable: true
     }),

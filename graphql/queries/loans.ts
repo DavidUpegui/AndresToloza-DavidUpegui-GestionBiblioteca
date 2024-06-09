@@ -7,12 +7,17 @@ const GET_LOANS = gql`
       user {
         id
         name
+        email
       }
       book {
         id
         title
       }
       status
+      createdBy {
+        id
+        email
+      }
     }
   }
 `;
@@ -24,14 +29,21 @@ const GET_LOANS_BY_USER = gql`
       user {
         id
         name
+        email
       }
       book {
         id
         title
       }
       status
+      createdBy {
+        id
+        email
+      }
     }
   }
 `;
+
+
 
 export { GET_LOANS, GET_LOANS_BY_USER };

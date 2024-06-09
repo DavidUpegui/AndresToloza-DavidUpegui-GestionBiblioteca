@@ -23,6 +23,7 @@ import { Toaster } from "../../components/ui/toaster";
 import classNames from "classnames";
 import { Spinner } from "@radix-ui/themes";
 import { GET_BOOKS } from "../../graphql/queries/book";
+import { SessionProvider, signOut, useSession } from 'next-auth/react';
 
 const CreateBookModal: React.FC = () => {
   const [title, setTitle] = useState("");
@@ -39,18 +40,29 @@ const CreateBookModal: React.FC = () => {
     refetchQueries: [{ query: GET_BOOKS }],
   });
 
+  const { data: session, status } = useSession();
+const user = session?.user;
+  
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     const variables = {
-      data: {
-        title,
-        author,
-        description,
-        category,
-        image,
-        quantityAvaiable: Number(quantityAvaiable),
-      },
+        data: {
+            title,
+            author,
+            description,
+            category,
+            image,
+            quantityAvaiable: Number(quantityAvaiable),
+            createdBy: {
+                connect: {
+                  id:  (user as { id: string })?.id
+                }
+              }
+            
+           
+        },
     };
 
     addBook({ variables })

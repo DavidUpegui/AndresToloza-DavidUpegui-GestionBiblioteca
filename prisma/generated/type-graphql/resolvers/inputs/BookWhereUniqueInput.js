@@ -7,6 +7,7 @@ const BookWhereInput_1 = require("../inputs/BookWhereInput");
 const IntFilter_1 = require("../inputs/IntFilter");
 const LoanListRelationFilter_1 = require("../inputs/LoanListRelationFilter");
 const StringFilter_1 = require("../inputs/StringFilter");
+const UserRelationFilter_1 = require("../inputs/UserRelationFilter");
 let BookWhereUniqueInput = class BookWhereUniqueInput {
 };
 exports.BookWhereUniqueInput = BookWhereUniqueInput;
@@ -71,11 +72,23 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", IntFilter_1.IntFilter)
 ], BookWhereUniqueInput.prototype, "quantityAvaiable", void 0);
 tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringFilter_1.StringFilter, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", StringFilter_1.StringFilter)
+], BookWhereUniqueInput.prototype, "userId", void 0);
+tslib_1.__decorate([
     TypeGraphQL.Field(_type => LoanListRelationFilter_1.LoanListRelationFilter, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", LoanListRelationFilter_1.LoanListRelationFilter)
 ], BookWhereUniqueInput.prototype, "loans", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => UserRelationFilter_1.UserRelationFilter, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", UserRelationFilter_1.UserRelationFilter)
+], BookWhereUniqueInput.prototype, "createdBy", void 0);
 exports.BookWhereUniqueInput = BookWhereUniqueInput = tslib_1.__decorate([
     TypeGraphQL.InputType("BookWhereUniqueInput", {})
 ], BookWhereUniqueInput);

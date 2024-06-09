@@ -6,4 +6,5 @@ export declare class BookCreateManyInput {
     category: string;
     image: string;
     quantityAvaiable: number;
+    userId: string;
 }

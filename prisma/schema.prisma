@@ -11,23 +11,26 @@ datasource db {
 }
 
 model Loan {
-  id          String   @id @default(cuid())
-  userId      String
-  bookId      String
-  status      LoanStatus
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  book        Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  id        String     @id @default(cuid())
+  userId    String
+  bookId    String
+  status    LoanStatus
+  user      User       @relation(name: "LoanUser", fields: [userId], references: [id], map: "LoanUser_userId_fkey", onDelete: Cascade)
+  book      Book       @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  createdBy User       @relation(name: "LoanCreatedBy", fields: [userId], references: [id], map: "LoanCreatedBy_userId_fkey", onDelete: Cascade)
 }
 
 model Book {
-  id          String   @id @default(cuid())
-  title       String
-  author      String
-  description String
-  category    String
-  image       String
-  quantityAvaiable    Int
-  loans       Loan[]  
+  id               String @id @default(cuid())
+  title            String
+  author           String
+  description      String
+  category         String
+  image            String
+  quantityAvaiable Int
+  loans            Loan[]
+  userId           String
+  createdBy        User   @relation(name: "BookCreatedBy", fields: [userId], references: [id], onDelete: Cascade)
 }
 
 enum LoanStatus {
@@ -40,30 +43,26 @@ enum Enum_RoleName {
   USER
 }
 
-
-
-
 generator typegraphql {
   provider           = "typegraphql-prisma"
   output             = "../prisma/generated/type-graphql"
   emitTranspiledCode = true
 }
 
-
-
-
 model User {
-  id            String    @id @default(cuid())
+  id            String         @id @default(cuid())
   name          String?
-  email         String    @unique
+  email         String         @unique
   emailVerified DateTime?
   image         String?
-  role          Enum_RoleName?     @default(USER)
+  role          Enum_RoleName? @default(USER)
   accounts      Account[]
   sessions      Session[]
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-  loans         Loan[]    
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  loans         Loan[]         @relation(name: "LoanUser")
+  createdLoans  Loan[]         @relation(name: "LoanCreatedBy")
+  createdBooks  Book[]         @relation(name: "BookCreatedBy")
 }
 
 model Account {
@@ -104,4 +103,3 @@ model VerificationToken {
 
   @@id([identifier, token])
 }
-

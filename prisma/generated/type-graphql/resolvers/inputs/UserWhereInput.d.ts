@@ -1,4 +1,5 @@
 import { AccountListRelationFilter } from "../inputs/AccountListRelationFilter";
+import { BookListRelationFilter } from "../inputs/BookListRelationFilter";
 import { DateTimeFilter } from "../inputs/DateTimeFilter";
 import { DateTimeNullableFilter } from "../inputs/DateTimeNullableFilter";
 import { EnumEnum_RoleNameNullableFilter } from "../inputs/EnumEnum_RoleNameNullableFilter";
@@ -21,4 +22,6 @@ export declare class UserWhereInput {
     accounts?: AccountListRelationFilter | undefined;
     sessions?: SessionListRelationFilter | undefined;
     loans?: LoanListRelationFilter | undefined;
+    createdLoans?: LoanListRelationFilter | undefined;
+    createdBooks?: BookListRelationFilter | undefined;
 }

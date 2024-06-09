@@ -6,4 +6,5 @@ export declare class BookMaxOrderByAggregateInput {
     category?: "asc" | "desc" | undefined;
     image?: "asc" | "desc" | undefined;
     quantityAvaiable?: "asc" | "desc" | undefined;
+    userId?: "asc" | "desc" | undefined;
 }

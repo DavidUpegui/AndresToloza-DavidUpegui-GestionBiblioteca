@@ -1,4 +1,5 @@
 import { AccountOrderByRelationAggregateInput } from "../inputs/AccountOrderByRelationAggregateInput";
+import { BookOrderByRelationAggregateInput } from "../inputs/BookOrderByRelationAggregateInput";
 import { LoanOrderByRelationAggregateInput } from "../inputs/LoanOrderByRelationAggregateInput";
 import { SessionOrderByRelationAggregateInput } from "../inputs/SessionOrderByRelationAggregateInput";
 import { SortOrderInput } from "../inputs/SortOrderInput";
@@ -14,4 +15,6 @@ export declare class UserOrderByWithRelationInput {
     accounts?: AccountOrderByRelationAggregateInput | undefined;
     sessions?: SessionOrderByRelationAggregateInput | undefined;
     loans?: LoanOrderByRelationAggregateInput | undefined;
+    createdLoans?: LoanOrderByRelationAggregateInput | undefined;
+    createdBooks?: BookOrderByRelationAggregateInput | undefined;
 }

@@ -7,5 +7,5 @@ export declare class FindManyBookArgs {
     cursor?: BookWhereUniqueInput | undefined;
     take?: number | undefined;
     skip?: number | undefined;
-    distinct?: Array<"id" | "title" | "author" | "description" | "category" | "image" | "quantityAvaiable"> | undefined;
+    distinct?: Array<"id" | "title" | "author" | "description" | "category" | "image" | "quantityAvaiable" | "userId"> | undefined;
 }

@@ -14,7 +14,7 @@ const cors = Cors({
   allowMethods: ['POST', 'OPTIONS', 'GET', 'HEAD'],
 });
 
-const prisma= new PrismaClient()
+const prisma= prismaDb
 
 interface Context {
   prisma: PrismaClient;

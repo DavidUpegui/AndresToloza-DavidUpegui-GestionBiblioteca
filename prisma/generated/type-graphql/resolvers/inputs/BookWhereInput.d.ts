@@ -1,6 +1,7 @@
 import { IntFilter } from "../inputs/IntFilter";
 import { LoanListRelationFilter } from "../inputs/LoanListRelationFilter";
 import { StringFilter } from "../inputs/StringFilter";
+import { UserRelationFilter } from "../inputs/UserRelationFilter";
 export declare class BookWhereInput {
     AND?: BookWhereInput[] | undefined;
     OR?: BookWhereInput[] | undefined;
@@ -12,5 +13,7 @@ export declare class BookWhereInput {
     category?: StringFilter | undefined;
     image?: StringFilter | undefined;
     quantityAvaiable?: IntFilter | undefined;
+    userId?: StringFilter | undefined;
     loans?: LoanListRelationFilter | undefined;
+    createdBy?: UserRelationFilter | undefined;
 }

@@ -4,6 +4,7 @@ exports.LoanCreateInput = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const BookCreateNestedOneWithoutLoansInput_1 = require("../inputs/BookCreateNestedOneWithoutLoansInput");
+const UserCreateNestedOneWithoutCreatedLoansInput_1 = require("../inputs/UserCreateNestedOneWithoutCreatedLoansInput");
 const UserCreateNestedOneWithoutLoansInput_1 = require("../inputs/UserCreateNestedOneWithoutLoansInput");
 const LoanStatus_1 = require("../../enums/LoanStatus");
 let LoanCreateInput = class LoanCreateInput {
@@ -33,6 +34,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", BookCreateNestedOneWithoutLoansInput_1.BookCreateNestedOneWithoutLoansInput)
 ], LoanCreateInput.prototype, "book", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => UserCreateNestedOneWithoutCreatedLoansInput_1.UserCreateNestedOneWithoutCreatedLoansInput, {
+        nullable: false
+    }),
+    tslib_1.__metadata("design:type", UserCreateNestedOneWithoutCreatedLoansInput_1.UserCreateNestedOneWithoutCreatedLoansInput)
+], LoanCreateInput.prototype, "createdBy", void 0);
 exports.LoanCreateInput = LoanCreateInput = tslib_1.__decorate([
     TypeGraphQL.InputType("LoanCreateInput", {})
 ], LoanCreateInput);

@@ -6,5 +6,6 @@ export declare class BookCountAggregate {
     category: number;
     image: number;
     quantityAvaiable: number;
+    userId: number;
     _all: number;
 }

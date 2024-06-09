@@ -122,7 +122,10 @@ const BooksTable: React.FC = () => {
                       Units available
                     </TableHead>
                     <TableHead className="font-bold text-black">
-                      Delete All
+                      Created By
+                    </TableHead>
+                    <TableHead className="font-bold text-black">
+                      Delete Book
                     </TableHead>
                     <TableHead className="font-bold text-black">
                       Change available
@@ -136,6 +139,7 @@ const BooksTable: React.FC = () => {
                       <TableCell>{book.title}</TableCell>
                       <TableCell>{book.author}</TableCell>
                       <TableCell>{book.quantityAvaiable}</TableCell>
+                      <TableCell>{book.createdBy.email}</TableCell>
                       <TableCell>
                         {deleteLoading ? (
                           <Spinner className="mx-auto" />
@@ -145,7 +149,7 @@ const BooksTable: React.FC = () => {
                             className="mb-5"
                             variant="destructive"
                           >
-                            Delete All
+                            Delete Book 
                           </Button>
                         )}
                       </TableCell>

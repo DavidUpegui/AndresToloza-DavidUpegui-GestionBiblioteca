@@ -12,4 +12,5 @@ export declare class LoanWhereInput {
     status?: EnumLoanStatusFilter | undefined;
     user?: UserRelationFilter | undefined;
     book?: BookRelationFilter | undefined;
+    createdBy?: UserRelationFilter | undefined;
 }

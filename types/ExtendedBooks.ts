@@ -1,12 +1,13 @@
-import { Book} from "@prisma/client";
+import { Book, LoanStatus, User} from "@prisma/client";
 
-// export interface ExtendedLoan extends User{
-//     user:User
-//     book:Book
-//     status:LoanStatus
+export interface ExtendedBook extends Book{
+    user:User
+    book:Book
+    status:LoanStatus
+    createdBy:User
 
-// }
+}
 
 export interface BooksQuery {
-  books: Book[];
+  books: ExtendedBook[];
 }

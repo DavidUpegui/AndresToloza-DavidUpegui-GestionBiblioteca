@@ -12,6 +12,7 @@ var BookScalarFieldEnum;
     BookScalarFieldEnum["category"] = "category";
     BookScalarFieldEnum["image"] = "image";
     BookScalarFieldEnum["quantityAvaiable"] = "quantityAvaiable";
+    BookScalarFieldEnum["userId"] = "userId";
 })(BookScalarFieldEnum || (exports.BookScalarFieldEnum = BookScalarFieldEnum = {}));
 TypeGraphQL.registerEnumType(BookScalarFieldEnum, {
     name: "BookScalarFieldEnum",

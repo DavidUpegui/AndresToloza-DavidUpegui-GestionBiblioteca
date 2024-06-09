@@ -68,6 +68,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", IntWithAggregatesFilter_1.IntWithAggregatesFilter)
 ], BookScalarWhereWithAggregatesInput.prototype, "quantityAvaiable", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringWithAggregatesFilter_1.StringWithAggregatesFilter, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", StringWithAggregatesFilter_1.StringWithAggregatesFilter)
+], BookScalarWhereWithAggregatesInput.prototype, "userId", void 0);
 exports.BookScalarWhereWithAggregatesInput = BookScalarWhereWithAggregatesInput = tslib_1.__decorate([
     TypeGraphQL.InputType("BookScalarWhereWithAggregatesInput", {})
 ], BookScalarWhereWithAggregatesInput);

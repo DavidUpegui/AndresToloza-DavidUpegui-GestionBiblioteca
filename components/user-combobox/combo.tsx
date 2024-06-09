@@ -12,7 +12,6 @@ import {
   CommandList,
 } from "../ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { User } from "../../prisma/generated/type-graphql/models/User";
 import { useQuery } from "@apollo/client";
 import { UsersQuery } from "../../types/ExtendedUser";
 import { GET_USERS } from "../../graphql/queries/user";
@@ -20,6 +19,9 @@ import { GET_USERS } from "../../graphql/queries/user";
 export function ComboboxUsers({
   setSelectedUser: setUser,
   selectedUser: userSelected,
+}: {
+  setSelectedUser: React.Dispatch<React.SetStateAction<any>>;
+  selectedUser: any;
 }) {
   const { data, loading, error } = useQuery<UsersQuery>(GET_USERS, {
     fetchPolicy: "cache-and-network",

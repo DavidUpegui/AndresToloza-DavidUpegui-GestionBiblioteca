@@ -45,6 +45,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", BookOrderByWithRelationInput_1.BookOrderByWithRelationInput)
 ], LoanOrderByWithRelationInput.prototype, "book", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => UserOrderByWithRelationInput_1.UserOrderByWithRelationInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", UserOrderByWithRelationInput_1.UserOrderByWithRelationInput)
+], LoanOrderByWithRelationInput.prototype, "createdBy", void 0);
 exports.LoanOrderByWithRelationInput = LoanOrderByWithRelationInput = tslib_1.__decorate([
     TypeGraphQL.InputType("LoanOrderByWithRelationInput", {})
 ], LoanOrderByWithRelationInput);

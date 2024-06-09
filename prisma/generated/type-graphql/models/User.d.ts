@@ -1,4 +1,5 @@
 import { Account } from "../models/Account";
+import { Book } from "../models/Book";
 import { Loan } from "../models/Loan";
 import { Session } from "../models/Session";
 import { UserCount } from "../resolvers/outputs/UserCount";
@@ -14,5 +15,7 @@ export declare class User {
     createdAt: Date;
     updatedAt: Date;
     loans?: Loan[];
+    createdLoans?: Loan[];
+    createdBooks?: Book[];
     _count?: UserCount | null;
 }

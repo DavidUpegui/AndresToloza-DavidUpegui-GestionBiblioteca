@@ -1,5 +1,7 @@
 import { AccountUpdateManyWithoutUserNestedInput } from "../inputs/AccountUpdateManyWithoutUserNestedInput";
+import { BookUpdateManyWithoutCreatedByNestedInput } from "../inputs/BookUpdateManyWithoutCreatedByNestedInput";
 import { DateTimeFieldUpdateOperationsInput } from "../inputs/DateTimeFieldUpdateOperationsInput";
+import { LoanUpdateManyWithoutCreatedByNestedInput } from "../inputs/LoanUpdateManyWithoutCreatedByNestedInput";
 import { LoanUpdateManyWithoutUserNestedInput } from "../inputs/LoanUpdateManyWithoutUserNestedInput";
 import { NullableDateTimeFieldUpdateOperationsInput } from "../inputs/NullableDateTimeFieldUpdateOperationsInput";
 import { NullableEnumEnum_RoleNameFieldUpdateOperationsInput } from "../inputs/NullableEnumEnum_RoleNameFieldUpdateOperationsInput";
@@ -18,4 +20,6 @@ export declare class UserUpdateInput {
     accounts?: AccountUpdateManyWithoutUserNestedInput | undefined;
     sessions?: SessionUpdateManyWithoutUserNestedInput | undefined;
     loans?: LoanUpdateManyWithoutUserNestedInput | undefined;
+    createdLoans?: LoanUpdateManyWithoutCreatedByNestedInput | undefined;
+    createdBooks?: BookUpdateManyWithoutCreatedByNestedInput | undefined;
 }

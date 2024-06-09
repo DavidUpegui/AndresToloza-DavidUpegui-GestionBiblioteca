@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { GET_LOANS } from "../../graphql/queries/loans";
 import { Spinner } from "@radix-ui/themes";
 import { Loan } from "@prisma/client";
@@ -18,17 +18,54 @@ import {
   TableRow,
 } from "../../components/ui/table";
 import { CreatLoanDialog } from "./createLoanModal";
+import { UPDATE_LOAN } from "@/graphql/mutations/loan";
+import { useToast } from "@/components/ui/use-toast";
 const LoansTable: React.FC = () => {
   const { data, loading, error } = useQuery<LoanQuery>(GET_LOANS, {
     fetchPolicy: "cache-and-network",
   });
+  const { toast } = useToast();
 
-  //   const cellClass = classNames({
-  //     'bg-yellow-300 rounded-md': loan.status === 'PENDING',
-  //     'bg-green-300 rounded-md': loan.status === 'RETURNED',
-  //   });
+  const [
+    updateLoan,
+    {
+      data: loanUpdateData,
+      loading: loanUpdateLoading,
+      error: loanUpdateError,
+    },
+  ] = useMutation(UPDATE_LOAN, {
+    refetchQueries: [{ query: GET_LOANS }],
+  });
 
-  console.log(data);
+  const changeLoanStatus = (id: string, currentStatus: string): void => {
+    updateLoan({
+      variables: {
+        data: {
+          status: {
+            set: currentStatus === "PENDING" ? "RETURNED" : "PENDING",
+          },
+        },
+        where: {
+          id: id,
+        },
+      },
+    })
+      .then((response) => {
+        console.log("Loan updated:", response.data.updateLoan); // Actualiza el log con la respuesta de la mutación
+        toast({
+          description: "Loan updated successfully",
+        });
+      })
+      .catch((err) => {
+        console.error("Error updating loan:", err);
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "There was a problem with your request.",
+        });
+      });
+  };
+
   return (
     <div className="p-20">
       {loading ? (
@@ -43,7 +80,7 @@ const LoansTable: React.FC = () => {
               <CreatLoanDialog></CreatLoanDialog>
             </div>
             <div className="border-2 border-gray-400 rounded-md shadow-border ">
-              <Table >
+              <Table>
                 <TableCaption>A list of Loans</TableCaption>
                 <TableHeader>
                   <TableRow>
@@ -51,11 +88,17 @@ const LoansTable: React.FC = () => {
                       ID
                     </TableHead>
                     <TableHead className="font-bold text-black">
-                      Username
+                      Requester User Id
                     </TableHead>
                     <TableHead className="font-bold text-black">Book</TableHead>
                     <TableHead className="font-bold text-black">
                       Status
+                    </TableHead>
+                    <TableHead className="font-bold text-black">
+                      Created By
+                    </TableHead>
+                    <TableHead className="font-bold text-black">
+                      Change Status
                     </TableHead>
                   </TableRow>
                 </TableHeader>
@@ -63,9 +106,9 @@ const LoansTable: React.FC = () => {
                   {data?.loans.map((loan) => (
                     <TableRow key={loan.id}>
                       <TableCell>{loan.id}</TableCell>
-                      <TableCell>{loan.user.name}</TableCell>
+                      <TableCell>{loan.user.email}</TableCell>
                       <TableCell>{loan.book.title}</TableCell>
-                      
+
                       <TableCell>
                         <Badge
                           className={
@@ -78,6 +121,21 @@ const LoansTable: React.FC = () => {
                         >
                           {loan.status}
                         </Badge>
+                      </TableCell>
+                      <TableCell>{loan.createdBy.email}</TableCell>
+                      <TableCell>
+                     
+                        {loanUpdateLoading ? (
+                          <Spinner className="mx-auto" />
+                        ) : (
+                          <Button
+                            onClick={() => changeLoanStatus(loan.id,loan.status)}
+                            className="mb-5 bg-blue-700"
+                            
+                          >
+                            Change Status
+                          </Button>
+                        )}
                       </TableCell>
                     </TableRow>
                   ))}

@@ -7,4 +7,5 @@ export declare class Loan {
     status: "PENDING" | "RETURNED";
     user?: User;
     book?: Book;
+    createdBy?: User;
 }

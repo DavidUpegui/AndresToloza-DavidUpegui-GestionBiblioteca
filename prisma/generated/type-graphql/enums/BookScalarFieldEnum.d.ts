@@ -5,5 +5,6 @@ export declare enum BookScalarFieldEnum {
     description = "description",
     category = "category",
     image = "image",
-    quantityAvaiable = "quantityAvaiable"
+    quantityAvaiable = "quantityAvaiable",
+    userId = "userId"
 }

@@ -4,7 +4,9 @@ exports.UserUpdateWithoutLoansInput = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const AccountUpdateManyWithoutUserNestedInput_1 = require("../inputs/AccountUpdateManyWithoutUserNestedInput");
+const BookUpdateManyWithoutCreatedByNestedInput_1 = require("../inputs/BookUpdateManyWithoutCreatedByNestedInput");
 const DateTimeFieldUpdateOperationsInput_1 = require("../inputs/DateTimeFieldUpdateOperationsInput");
+const LoanUpdateManyWithoutCreatedByNestedInput_1 = require("../inputs/LoanUpdateManyWithoutCreatedByNestedInput");
 const NullableDateTimeFieldUpdateOperationsInput_1 = require("../inputs/NullableDateTimeFieldUpdateOperationsInput");
 const NullableEnumEnum_RoleNameFieldUpdateOperationsInput_1 = require("../inputs/NullableEnumEnum_RoleNameFieldUpdateOperationsInput");
 const NullableStringFieldUpdateOperationsInput_1 = require("../inputs/NullableStringFieldUpdateOperationsInput");
@@ -73,6 +75,18 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", SessionUpdateManyWithoutUserNestedInput_1.SessionUpdateManyWithoutUserNestedInput)
 ], UserUpdateWithoutLoansInput.prototype, "sessions", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => LoanUpdateManyWithoutCreatedByNestedInput_1.LoanUpdateManyWithoutCreatedByNestedInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", LoanUpdateManyWithoutCreatedByNestedInput_1.LoanUpdateManyWithoutCreatedByNestedInput)
+], UserUpdateWithoutLoansInput.prototype, "createdLoans", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => BookUpdateManyWithoutCreatedByNestedInput_1.BookUpdateManyWithoutCreatedByNestedInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", BookUpdateManyWithoutCreatedByNestedInput_1.BookUpdateManyWithoutCreatedByNestedInput)
+], UserUpdateWithoutLoansInput.prototype, "createdBooks", void 0);
 exports.UserUpdateWithoutLoansInput = UserUpdateWithoutLoansInput = tslib_1.__decorate([
     TypeGraphQL.InputType("UserUpdateWithoutLoansInput", {})
 ], UserUpdateWithoutLoansInput);

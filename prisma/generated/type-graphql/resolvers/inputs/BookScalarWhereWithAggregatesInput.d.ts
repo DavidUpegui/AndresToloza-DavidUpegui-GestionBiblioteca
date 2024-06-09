@@ -11,4 +11,5 @@ export declare class BookScalarWhereWithAggregatesInput {
     category?: StringWithAggregatesFilter | undefined;
     image?: StringWithAggregatesFilter | undefined;
     quantityAvaiable?: IntWithAggregatesFilter | undefined;
+    userId?: StringWithAggregatesFilter | undefined;
 }

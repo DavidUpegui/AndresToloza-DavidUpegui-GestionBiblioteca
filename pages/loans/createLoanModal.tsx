@@ -21,12 +21,15 @@ import { Toaster } from "../../components/ui/toaster";
 import classNames from "classnames";
 import { Spinner } from "@radix-ui/themes";
 import { GET_LOANS } from "../../graphql/queries/loans";
+import { useSession } from "next-auth/react";
 
 function CreatLoanDialog() {
   const [selectedBook, setSelectedBook] = useState<any>(null);
   const [selectedUser, setSelectedUser] = useState<any>(null);
   const [openDialog, setopenDialog] = useState<boolean>(false);
   const { toast } = useToast();
+  const { data: session, status } = useSession();
+  const user = session?.user;
 
   const [createLoan, { data, loading, error }] = useMutation(CREATE_LOAN, {
     refetchQueries: [{ query: GET_LOANS }],
@@ -49,6 +52,19 @@ function CreatLoanDialog() {
               id: selectedBook.id,
             },
           },
+          createdBy: {
+            connect: {
+              id: (user as { id: string })?.id,
+            },
+          },
+        },
+        updateOneBookData2: {
+          quantityAvaiable: {
+            decrement: 1,
+          },
+        },
+        where: {
+          id: selectedBook.id,
         },
       },
     })

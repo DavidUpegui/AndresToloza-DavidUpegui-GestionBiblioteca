@@ -7,4 +7,5 @@ export declare class CreateManyLoanAndReturnOutputType {
     status: "PENDING" | "RETURNED";
     user: User;
     book: Book;
+    createdBy: User;
 }

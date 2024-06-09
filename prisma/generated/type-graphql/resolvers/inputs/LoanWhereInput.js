@@ -64,6 +64,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", BookRelationFilter_1.BookRelationFilter)
 ], LoanWhereInput.prototype, "book", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => UserRelationFilter_1.UserRelationFilter, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", UserRelationFilter_1.UserRelationFilter)
+], LoanWhereInput.prototype, "createdBy", void 0);
 exports.LoanWhereInput = LoanWhereInput = tslib_1.__decorate([
     TypeGraphQL.InputType("LoanWhereInput", {})
 ], LoanWhereInput);

@@ -76,11 +76,11 @@ function UpdateUserDialog({ userProp }: { userProp: User }) {
       </Button>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Editar usuario</DialogTitle>
+          <DialogTitle>Edit user</DialogTitle>
           
 
           <DialogDescription>
-            Selecciona el nuevo rol para el usuario: {userProp.email}
+            Select the new role for the user: {userProp.email}
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">

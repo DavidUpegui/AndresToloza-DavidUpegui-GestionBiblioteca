@@ -1,4 +1,5 @@
 import { LoanCreateNestedManyWithoutBookInput } from "../inputs/LoanCreateNestedManyWithoutBookInput";
+import { UserCreateNestedOneWithoutCreatedBooksInput } from "../inputs/UserCreateNestedOneWithoutCreatedBooksInput";
 export declare class BookCreateInput {
     id?: string | undefined;
     title: string;
@@ -8,4 +9,5 @@ export declare class BookCreateInput {
     image: string;
     quantityAvaiable: number;
     loans?: LoanCreateNestedManyWithoutBookInput | undefined;
+    createdBy: UserCreateNestedOneWithoutCreatedBooksInput;
 }

@@ -4,6 +4,7 @@ exports.UserWhereInput = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const AccountListRelationFilter_1 = require("../inputs/AccountListRelationFilter");
+const BookListRelationFilter_1 = require("../inputs/BookListRelationFilter");
 const DateTimeFilter_1 = require("../inputs/DateTimeFilter");
 const DateTimeNullableFilter_1 = require("../inputs/DateTimeNullableFilter");
 const EnumEnum_RoleNameNullableFilter_1 = require("../inputs/EnumEnum_RoleNameNullableFilter");
@@ -98,6 +99,18 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", LoanListRelationFilter_1.LoanListRelationFilter)
 ], UserWhereInput.prototype, "loans", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => LoanListRelationFilter_1.LoanListRelationFilter, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", LoanListRelationFilter_1.LoanListRelationFilter)
+], UserWhereInput.prototype, "createdLoans", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => BookListRelationFilter_1.BookListRelationFilter, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", BookListRelationFilter_1.BookListRelationFilter)
+], UserWhereInput.prototype, "createdBooks", void 0);
 exports.UserWhereInput = UserWhereInput = tslib_1.__decorate([
     TypeGraphQL.InputType("UserWhereInput", {})
 ], UserWhereInput);

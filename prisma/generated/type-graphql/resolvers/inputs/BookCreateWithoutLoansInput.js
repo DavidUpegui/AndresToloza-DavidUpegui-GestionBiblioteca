@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.BookCreateWithoutLoansInput = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
+const UserCreateNestedOneWithoutCreatedBooksInput_1 = require("../inputs/UserCreateNestedOneWithoutCreatedBooksInput");
 let BookCreateWithoutLoansInput = class BookCreateWithoutLoansInput {
 };
 exports.BookCreateWithoutLoansInput = BookCreateWithoutLoansInput;
@@ -48,6 +49,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", Number)
 ], BookCreateWithoutLoansInput.prototype, "quantityAvaiable", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => UserCreateNestedOneWithoutCreatedBooksInput_1.UserCreateNestedOneWithoutCreatedBooksInput, {
+        nullable: false
+    }),
+    tslib_1.__metadata("design:type", UserCreateNestedOneWithoutCreatedBooksInput_1.UserCreateNestedOneWithoutCreatedBooksInput)
+], BookCreateWithoutLoansInput.prototype, "createdBy", void 0);
 exports.BookCreateWithoutLoansInput = BookCreateWithoutLoansInput = tslib_1.__decorate([
     TypeGraphQL.InputType("BookCreateWithoutLoansInput", {})
 ], BookCreateWithoutLoansInput);

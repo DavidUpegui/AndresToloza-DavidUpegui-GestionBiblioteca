@@ -12,13 +12,10 @@ import {
   CommandList,
 } from "../ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { User } from "../../prisma/generated/type-graphql/models/User";
-import { useQuery } from "@apollo/client";
-import { BooksQuery } from "../../types/ExtendedBooks";
-import { GET_BOOKS } from "../../graphql/queries/book";
+
 import { Book, Enum_RoleName } from "@prisma/client";
 
-export function ComboboxRoles({setSelectedRole: setRole, selectedRole: roleSelected}) {
+export function ComboboxRoles({setSelectedRole: setRole, selectedRole: roleSelected}: {setSelectedRole: React.Dispatch<React.SetStateAction<string>>, selectedRole: string}) {
   
 
   const roles= Enum_RoleName

@@ -6,6 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const BookUpdateOneRequiredWithoutLoansNestedInput_1 = require("../inputs/BookUpdateOneRequiredWithoutLoansNestedInput");
 const EnumLoanStatusFieldUpdateOperationsInput_1 = require("../inputs/EnumLoanStatusFieldUpdateOperationsInput");
 const StringFieldUpdateOperationsInput_1 = require("../inputs/StringFieldUpdateOperationsInput");
+const UserUpdateOneRequiredWithoutCreatedLoansNestedInput_1 = require("../inputs/UserUpdateOneRequiredWithoutCreatedLoansNestedInput");
 const UserUpdateOneRequiredWithoutLoansNestedInput_1 = require("../inputs/UserUpdateOneRequiredWithoutLoansNestedInput");
 let LoanUpdateInput = class LoanUpdateInput {
 };
@@ -34,6 +35,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", BookUpdateOneRequiredWithoutLoansNestedInput_1.BookUpdateOneRequiredWithoutLoansNestedInput)
 ], LoanUpdateInput.prototype, "book", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => UserUpdateOneRequiredWithoutCreatedLoansNestedInput_1.UserUpdateOneRequiredWithoutCreatedLoansNestedInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", UserUpdateOneRequiredWithoutCreatedLoansNestedInput_1.UserUpdateOneRequiredWithoutCreatedLoansNestedInput)
+], LoanUpdateInput.prototype, "createdBy", void 0);
 exports.LoanUpdateInput = LoanUpdateInput = tslib_1.__decorate([
     TypeGraphQL.InputType("LoanUpdateInput", {})
 ], LoanUpdateInput);

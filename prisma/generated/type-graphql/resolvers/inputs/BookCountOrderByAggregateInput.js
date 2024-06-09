@@ -49,6 +49,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", String)
 ], BookCountOrderByAggregateInput.prototype, "quantityAvaiable", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", String)
+], BookCountOrderByAggregateInput.prototype, "userId", void 0);
 exports.BookCountOrderByAggregateInput = BookCountOrderByAggregateInput = tslib_1.__decorate([
     TypeGraphQL.InputType("BookCountOrderByAggregateInput", {})
 ], BookCountOrderByAggregateInput);

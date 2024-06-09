@@ -11,6 +11,7 @@ export declare class BookGroupBy {
     category: string;
     image: string;
     quantityAvaiable: number;
+    userId: string;
     _count: BookCountAggregate | null;
     _avg: BookAvgAggregate | null;
     _sum: BookSumAggregate | null;

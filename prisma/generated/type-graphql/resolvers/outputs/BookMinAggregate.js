@@ -48,6 +48,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", Number)
 ], BookMinAggregate.prototype, "quantityAvaiable", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", String)
+], BookMinAggregate.prototype, "userId", void 0);
 exports.BookMinAggregate = BookMinAggregate = tslib_1.__decorate([
     TypeGraphQL.ObjectType("BookMinAggregate", {})
 ], BookMinAggregate);

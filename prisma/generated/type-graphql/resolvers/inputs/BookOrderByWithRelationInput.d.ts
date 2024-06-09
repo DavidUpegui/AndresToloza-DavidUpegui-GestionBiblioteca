@@ -1,4 +1,5 @@
 import { LoanOrderByRelationAggregateInput } from "../inputs/LoanOrderByRelationAggregateInput";
+import { UserOrderByWithRelationInput } from "../inputs/UserOrderByWithRelationInput";
 export declare class BookOrderByWithRelationInput {
     id?: "asc" | "desc" | undefined;
     title?: "asc" | "desc" | undefined;
@@ -7,5 +8,7 @@ export declare class BookOrderByWithRelationInput {
     category?: "asc" | "desc" | undefined;
     image?: "asc" | "desc" | undefined;
     quantityAvaiable?: "asc" | "desc" | undefined;
+    userId?: "asc" | "desc" | undefined;
     loans?: LoanOrderByRelationAggregateInput | undefined;
+    createdBy?: UserOrderByWithRelationInput | undefined;
 }

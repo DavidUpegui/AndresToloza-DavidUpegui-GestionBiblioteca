@@ -2,6 +2,7 @@ import { BookWhereInput } from "../inputs/BookWhereInput";
 import { IntFilter } from "../inputs/IntFilter";
 import { LoanListRelationFilter } from "../inputs/LoanListRelationFilter";
 import { StringFilter } from "../inputs/StringFilter";
+import { UserRelationFilter } from "../inputs/UserRelationFilter";
 export declare class BookWhereUniqueInput {
     id?: string | undefined;
     AND?: BookWhereInput[] | undefined;
@@ -13,5 +14,7 @@ export declare class BookWhereUniqueInput {
     category?: StringFilter | undefined;
     image?: StringFilter | undefined;
     quantityAvaiable?: IntFilter | undefined;
+    userId?: StringFilter | undefined;
     loans?: LoanListRelationFilter | undefined;
+    createdBy?: UserRelationFilter | undefined;
 }

@@ -6,4 +6,5 @@ export declare class BookMaxAggregate {
     category: string | null;
     image: string | null;
     quantityAvaiable: number | null;
+    userId: string | null;
 }

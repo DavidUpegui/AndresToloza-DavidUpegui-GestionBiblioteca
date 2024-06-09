@@ -4,6 +4,7 @@ export interface ExtendedLoan extends Loan{
     user:User
     book:Book
     status:LoanStatus
+    createdBy: User
 
 }
 

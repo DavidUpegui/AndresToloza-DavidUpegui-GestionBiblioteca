@@ -1,4 +1,6 @@
 import { AccountCreateNestedManyWithoutUserInput } from "../inputs/AccountCreateNestedManyWithoutUserInput";
+import { BookCreateNestedManyWithoutCreatedByInput } from "../inputs/BookCreateNestedManyWithoutCreatedByInput";
+import { LoanCreateNestedManyWithoutCreatedByInput } from "../inputs/LoanCreateNestedManyWithoutCreatedByInput";
 import { SessionCreateNestedManyWithoutUserInput } from "../inputs/SessionCreateNestedManyWithoutUserInput";
 export declare class UserCreateWithoutLoansInput {
     id?: string | undefined;
@@ -11,4 +13,6 @@ export declare class UserCreateWithoutLoansInput {
     updatedAt?: Date | undefined;
     accounts?: AccountCreateNestedManyWithoutUserInput | undefined;
     sessions?: SessionCreateNestedManyWithoutUserInput | undefined;
+    createdLoans?: LoanCreateNestedManyWithoutCreatedByInput | undefined;
+    createdBooks?: BookCreateNestedManyWithoutCreatedByInput | undefined;
 }

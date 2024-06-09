@@ -1,3 +1,4 @@
+import { User } from "../outputs/User";
 export declare class CreateManyBookAndReturnOutputType {
     id: string;
     title: string;
@@ -6,4 +7,6 @@ export declare class CreateManyBookAndReturnOutputType {
     category: string;
     image: string;
     quantityAvaiable: number;
+    userId: string;
+    createdBy: User;
 }
