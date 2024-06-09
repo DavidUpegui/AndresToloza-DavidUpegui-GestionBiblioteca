@@ -2,24 +2,23 @@ import React, { useState } from "react";
 import { useQuery } from "@apollo/client";
 import { GET_LOANS_BY_USER } from "../../../graphql/queries/loans";
 import { Spinner } from "@radix-ui/themes";
-import { Loan } from "@prisma/client";
-import { ExtendedLoan, LoanQuery } from "../../../types/ExtendedLoan";
-import classNames from "classnames";
+import { LoanQuery } from "../../../types/ExtendedLoan";
 import { Badge } from "../../../components/ui/badge";
-import { Button } from "../../../components/ui/button";
 import {
   Table,
   TableBody,
   TableCaption,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
 } from "../../../components/ui/table";
 import { CreatLoanDialog } from "../createLoanModal";
 import { useRouter } from "next/router";
-import { equal } from "assert";
+import { useSession } from "next-auth/react";
+import { Button } from "@/components/ui/button";
+import { UserWithRole } from '../../../types/User';
+
 
 const LoansUserTable: React.FC = () => {
   const router = useRouter();
@@ -30,13 +29,38 @@ const LoansUserTable: React.FC = () => {
     variables: {
       where: {
         userId: {
-          equals:query.userId
-        }
+          equals: query.userId,
+        },
       },
-    }
+    },
   });
 
-  console.log(data);
+  const { data: session, status } = useSession();
+ 
+  if (status === "loading") {
+    return <Spinner className="mx-auto" />;
+  }
+  if (!session) {
+    console.log("No hay sesión");
+    return (
+      <div className="flex justify-center items-center h-screen">
+      <div className="bg-gray-200 p-4 rounded-md">
+        <h1 className="text-xl font-bold mb-2">
+          You must log in for this resource
+        </h1>
+        <p className="text-gray-600">
+          Please, log in
+        </p>
+        <div className="flex justify-center mt-5">
+          <Button onClick={() => router.push("/")}>Go login</Button>
+        </div>
+      </div>
+    </div>
+    );
+  }
+  const user: UserWithRole | undefined = session?.user;
+  const role = user?.role;
+
   return (
     <div className="p-20">
       {loading ? (

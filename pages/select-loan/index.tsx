@@ -15,19 +15,49 @@ import { ComboboxUsers } from "../../components/user-combobox/combo";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { User } from "@prisma/client";
+import { useSession } from "next-auth/react";
+import { UserWithRole } from "@/types/User";
+import { Spinner } from "@radix-ui/themes";
 
 export default function SelectUserLoan() {
-const [selectedUser, setSelectedUser] = useState<User>();
-const router = useRouter();
+  
 
-const redirect = () => {
+  const [selectedUser, setSelectedUser] = useState<User>();
+  const router = useRouter();
+
+  const redirect = () => {
     if (selectedUser) {
-        router.push(`/loans/${selectedUser.id}`);
+      router.push(`/loans/${selectedUser.id}`);
     } else {
-        router.push("/loans");
+      router.push("/loans");
     }
-};
+  };
+  const { data: session, status } = useSession();
+  if (status === "loading") {
+    return <Spinner className="mx-auto" />;
+  }
 
+  if (!session) {
+    console.log("No hay sesión");
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="bg-gray-200 p-4 rounded-md">
+          <h1 className="text-xl font-bold mb-2">
+            You must log in for this resource
+          </h1>
+          <p className="text-gray-600">
+            Please, log in
+          </p>
+          <div className="flex justify-center mt-5">
+            <Button onClick={() => router.push("/")}>Go login</Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  const user: UserWithRole | undefined = session?.user;
+  const role = user?.role;
   return (
     <div className="text-center align-middle text-white relative z-10 p-10 h-full flex items-center justify-center">
       <div>

@@ -23,6 +23,9 @@ import { BooksQuery } from "../../types/ExtendedBooks";
 import { DELETE_BOOK, DELETE_BOOK_UNIT } from "../../graphql/mutations/book";
 import { toast, useToast } from "../../components/ui/use-toast";
 import { Toaster } from "../../components/ui/toaster";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { UserWithRole } from "@/types/User";
 
 const BooksTable: React.FC = () => {
   const { data, loading, error } = useQuery<BooksQuery>(GET_BOOKS, {
@@ -93,6 +96,34 @@ const BooksTable: React.FC = () => {
       });
   };
 
+  const { data: session, status } = useSession();
+  const router = useRouter();
+  if (status === "loading") {
+    return <Spinner className="mx-auto" />;
+  }
+  if (!session) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="bg-gray-200 p-4 rounded-md">
+          <h1 className="text-xl font-bold mb-2">
+            You must log in for this resource
+          </h1>
+          <p className="text-gray-600">Please, log in</p>
+          <div className="flex justify-center mt-5">
+            <Button onClick={() => router.push("/")}>Go login</Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  const user: UserWithRole | undefined = session?.user;
+  const role = user?.role;
+
+  //   if(role != "ADMIN"){
+  //     return router.push("/")
+  //   }
+
   return (
     <div className="p-20">
       {loading ? (
@@ -106,7 +137,7 @@ const BooksTable: React.FC = () => {
             <div>{<CreateBookModal></CreateBookModal>}</div>
             <div className="border-2 border-gray-400 rounded-md shadow-border ">
               <Table>
-                <TableCaption>Lista de libros existentes</TableCaption>
+                <TableCaption>List of existing books </TableCaption>
                 <TableHeader>
                   <TableRow>
                     <TableHead className="w-[100px] font-bold text-black">
@@ -149,7 +180,7 @@ const BooksTable: React.FC = () => {
                             className="mb-5"
                             variant="destructive"
                           >
-                            Delete Book 
+                            Delete Book
                           </Button>
                         )}
                       </TableCell>

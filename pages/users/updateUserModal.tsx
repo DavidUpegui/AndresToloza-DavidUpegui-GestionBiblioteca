@@ -54,7 +54,6 @@ function UpdateUserDialog({ userProp }: { userProp: User }) {
       },
     })
       .then((response) => {
-        console.log("User updated:", response.data.updateOneUser);
         toast({
           description: "User updated successfully",
         });

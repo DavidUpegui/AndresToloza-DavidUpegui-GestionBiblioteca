@@ -23,7 +23,8 @@ import { Toaster } from "../../components/ui/toaster";
 import classNames from "classnames";
 import { Spinner } from "@radix-ui/themes";
 import { GET_BOOKS } from "../../graphql/queries/book";
-import { SessionProvider, signOut, useSession } from 'next-auth/react';
+import { SessionProvider, signOut, useSession } from "next-auth/react";
+import { UserWithRole } from "@/types/User";
 
 const CreateBookModal: React.FC = () => {
   const [title, setTitle] = useState("");
@@ -40,29 +41,23 @@ const CreateBookModal: React.FC = () => {
     refetchQueries: [{ query: GET_BOOKS }],
   });
 
-  const { data: session, status } = useSession();
-const user = session?.user;
-  
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     const variables = {
-        data: {
-            title,
-            author,
-            description,
-            category,
-            image,
-            quantityAvaiable: Number(quantityAvaiable),
-            createdBy: {
-                connect: {
-                  id:  (user as { id: string })?.id
-                }
-              }
-            
-           
+      data: {
+        title,
+        author,
+        description,
+        category,
+        image,
+        quantityAvaiable: Number(quantityAvaiable),
+        createdBy: {
+          connect: {
+            id: (user as { id: string })?.id,
+          },
         },
+      },
     };
 
     addBook({ variables })
@@ -81,12 +76,21 @@ const user = session?.user;
         });
       });
   };
+  const { data: session, status } = useSession();
+  if (status === "loading") {
+    return <Spinner className="mx-auto" />;
+  }
+
+  const user: UserWithRole | undefined = session?.user;
+  const role = user?.role;
 
   return (
     <Dialog open={openDialog}>
-      <Button className="mb-5" onClick={() => setopenDialog(!openDialog)}>
-        Create Book
-      </Button>
+      {role === "ADMIN" && (
+        <Button className="mb-5" onClick={() => setopenDialog(!openDialog)}>
+          Create Book
+        </Button>
+      )}
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Create Book</DialogTitle>

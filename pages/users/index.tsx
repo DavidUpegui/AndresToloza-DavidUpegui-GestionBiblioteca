@@ -20,12 +20,56 @@ import {
 import { UpdateUserDialog } from "./updateUserModal";
 import { GET_USERS } from "../../graphql/queries/user";
 import { UsersQuery } from "../../types/ExtendedUser";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
+import { UserWithRole } from "@/types/User";
+
 const LoansTable: React.FC = () => {
   const { data, loading, error } = useQuery<UsersQuery>(GET_USERS, {
     fetchPolicy: "cache-and-network",
   });
 
-  console.log(data);
+  const { data: session, status } = useSession();
+  const router = useRouter();
+  if (status === "loading") {
+    return <Spinner className="mx-auto" />;
+  }
+
+  if (!session) {
+    console.log("No hay sesión");
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="bg-gray-200 p-4 rounded-md">
+          <h1 className="text-xl font-bold mb-2">
+            You must log in for this resource
+          </h1>
+          <p className="text-gray-600">Please, log in</p>
+          <div className="flex justify-center mt-5">
+            <Button onClick={() => router.push("/")}>Go login</Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  const user: UserWithRole | undefined = session?.user;
+  const role = user?.role;
+
+  if (role !== "ADMIN") {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="bg-gray-200 p-4 rounded-md">
+          <h1 className="text-xl font-bold mb-2">
+            You have no access for this resource
+          </h1>
+          <div className="flex justify-center mt-5">
+            <Button onClick={() => router.push("/")}>Go Home</Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="p-20">
       {loading ? (
