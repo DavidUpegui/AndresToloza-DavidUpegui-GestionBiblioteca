@@ -20,47 +20,48 @@ import { useToast } from "../../components/ui/use-toast";
 import { Toaster } from "../../components/ui/toaster";
 import classNames from "classnames";
 import { Spinner } from "@radix-ui/themes";
-import { GET_LOANS } from "../../graphql/queries/loans";
+import { User } from "@prisma/client";
+import { ComboboxRoles } from "../../components/role-combobox";
+import { UPDATE_USER_ROLE } from "../../graphql/mutations/user";
+import { GET_USERS } from "../../graphql/queries/user";
 
-function CreatLoanDialog() {
-  const [selectedBook, setSelectedBook] = useState<any>(null);
-  const [selectedUser, setSelectedUser] = useState<any>(null);
+function UpdateUserDialog({ userProp }: { userProp: User }) {
+  console.log(userProp);
+  const [selectedRole, setSelectedRole] = useState<any>(userProp.role);
+  // const [selectedUser, setSelectedUser] = useState<any>(null);
   const [openDialog, setopenDialog] = useState<boolean>(false);
-  const { toast } = useToast();
 
-  const [createLoan, { data, loading, error }] = useMutation(CREATE_LOAN, {
-    refetchQueries: [{ query: GET_LOANS }],
-  });
+  const [updateUserRole, { data, loading, error }] =
+    useMutation(UPDATE_USER_ROLE, {
+      refetchQueries: [{ query: GET_USERS }],
+    });
+  const { toast } = useToast();
   const router = useRouter();
 
   const submit = (): void => {
-    console.log(selectedBook, selectedUser);
-    createLoan({
+    console.log(selectedRole);
+
+    updateUserRole({
       variables: {
         data: {
-          status: "PENDING",
-          user: {
-            connect: {
-              id: selectedUser.id,
-            },
+          role: {
+            set: selectedRole,
           },
-          book: {
-            connect: {
-              id: selectedBook.id,
-            },
-          },
+        },
+        where: {
+          id: userProp.id,
         },
       },
     })
       .then((response) => {
-        console.log("Loan created:", response.data.createOneLoan);
+        console.log("User updated:", response.data.updateOneUser);
         toast({
-          description: "Loan created successfully",
+          description: "User updated successfully",
         });
         setopenDialog(!openDialog);
       })
       .catch((err) => {
-        console.error("Error creating loan:", err);
+        console.error("Error updating user:", err);
         toast({
           variant: "destructive",
           title: "Uh oh! Something went wrong.",
@@ -68,41 +69,29 @@ function CreatLoanDialog() {
         });
       });
   };
-
   return (
     <Dialog open={openDialog}>
       <Button className="mb-5" onClick={() => setopenDialog(!openDialog)}>
-        Create Loan
+        Cambiar rol
       </Button>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Create Loan</DialogTitle>
+          <DialogTitle>Editar usuario</DialogTitle>
+          
+
           <DialogDescription>
-            Select Book and Username to create a Loan. Click save when you're
-            done.
+            Selecciona el nuevo rol para el usuario: {userProp.email}
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="name" className="text-right">
-              Book
+              Rol
             </Label>
-            <ComboboxBooks
-              setSelectedBook={setSelectedBook}
-              selectedBook={selectedBook}
+            <ComboboxRoles
+              setSelectedRole={setSelectedRole}
+              selectedRole={selectedRole}
             />
-          </div>
-
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="username" className="text-right">
-              Username
-            </Label>
-            <div className="flex items-center space-x-4 text-black w-full">
-              <ComboboxUsers
-                setSelectedUser={setSelectedUser}
-                selectedUser={selectedUser}
-              />
-            </div>
           </div>
         </div>
         <DialogFooter>
@@ -110,7 +99,7 @@ function CreatLoanDialog() {
             <p>Loading...</p>
           ) : (
             <div className="flex flex-row-reverse">
-              <Button onClick={submit}>Create Loan</Button>
+              <Button onClick={submit}>Update user</Button>
               <Button
                 className="mr-5"
                 onClick={() => setopenDialog(!openDialog)}
@@ -126,4 +115,4 @@ function CreatLoanDialog() {
   );
 }
 
-export { CreatLoanDialog };
+export { UpdateUserDialog };

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useQuery } from "@apollo/client";
 import { GET_LOANS } from "../../graphql/queries/loans";
 import { Spinner } from "@radix-ui/themes";
-import { Loan } from "@prisma/client";
+import { Loan, User } from "@prisma/client";
 import { ExtendedLoan, LoanQuery } from "../../types/ExtendedLoan";
 import classNames from "classnames";
 import { Badge } from "../../components/ui/badge";
@@ -17,16 +17,13 @@ import {
   TableHeader,
   TableRow,
 } from "../../components/ui/table";
-import { CreatLoanDialog } from "./createLoanModal";
+import { UpdateUserDialog } from "./updateUserModal";
+import { GET_USERS } from "../../graphql/queries/user";
+import { UsersQuery } from "../../types/ExtendedUser";
 const LoansTable: React.FC = () => {
-  const { data, loading, error } = useQuery<LoanQuery>(GET_LOANS, {
+  const { data, loading, error } = useQuery<UsersQuery>(GET_USERS, {
     fetchPolicy: "cache-and-network",
   });
-
-  //   const cellClass = classNames({
-  //     'bg-yellow-300 rounded-md': loan.status === 'PENDING',
-  //     'bg-green-300 rounded-md': loan.status === 'RETURNED',
-  //   });
 
   console.log(data);
   return (
@@ -36,48 +33,55 @@ const LoansTable: React.FC = () => {
       ) : (
         <div>
           <h1 className="scroll-m-20 text-4xl text-center font-extrabold tracking-tight lg:text-5xl mb-20">
-            List of loans
+            List of Users
           </h1>
           <div>
-            <div>
-              <CreatLoanDialog></CreatLoanDialog>
-            </div>
+            <div></div>
             <div className="border-2 border-gray-400 rounded-md shadow-border ">
-              <Table >
-                <TableCaption>A list of Loans</TableCaption>
+              <Table>
+                <TableCaption>A list of Users</TableCaption>
                 <TableHeader>
                   <TableRow>
                     <TableHead className="w-[100px] font-bold text-black">
                       ID
                     </TableHead>
+                    <TableHead className="font-bold text-black">Name</TableHead>
                     <TableHead className="font-bold text-black">
-                      Username
+                      email
                     </TableHead>
-                    <TableHead className="font-bold text-black">Book</TableHead>
+                    <TableHead className="font-bold text-black">Role</TableHead>
                     <TableHead className="font-bold text-black">
-                      Status
+                      Created At
+                    </TableHead>
+                    <TableHead className="font-bold text-black">
+                      Change Role
                     </TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {data?.loans.map((loan) => (
-                    <TableRow key={loan.id}>
-                      <TableCell>{loan.id}</TableCell>
-                      <TableCell>{loan.user.name}</TableCell>
-                      <TableCell>{loan.book.title}</TableCell>
-                      
+                  {data?.users.map((user) => (
+                    <TableRow key={user.id}>
+                      <TableCell>{user.id}</TableCell>
+                      <TableCell>{user.name}</TableCell>
+                      <TableCell>{user.email}</TableCell>
                       <TableCell>
                         <Badge
                           className={
-                            loan.status === "PENDING"
+                            user.role === "USER"
                               ? "text-center text-black bg-yellow-500 rounded-md"
-                              : loan.status === "RETURNED"
+                              : user.role === "ADMIN"
                                 ? "text-center text-black bg-green-600 rounded-md"
                                 : ""
                           }
                         >
-                          {loan.status}
+                          {user.role}
                         </Badge>
+                      </TableCell>
+                      <TableCell>
+                        {new Date(user.createdAt).toLocaleString()}
+                      </TableCell>
+                      <TableCell>
+                        <UpdateUserDialog userProp={user}></UpdateUserDialog>
                       </TableCell>
                     </TableRow>
                   ))}

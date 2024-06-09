@@ -1,13 +1,13 @@
-import { Book, Loan, LoanStatus, User } from "@prisma/client";
+import { Book, Enum_RoleName, LoanStatus, User } from "@prisma/client";
 
-// export interface ExtendedLoan extends User{
-//     user:User
-//     book:Book
-//     status:LoanStatus
+// export interface ExtendedUser extends User{
+//     // user:User
+//     // book:Book
+//     role:Enum_RoleName
 
 // }
 
 
-export interface UserQuery{
+export interface UsersQuery{
     users:User[]
 }

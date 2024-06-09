@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useQuery } from "@apollo/client";
-import { GET_LOANS } from "../../graphql/queries/loans";
+import { GET_LOANS_BY_USER } from "../../../graphql/queries/loans";
 import { Spinner } from "@radix-ui/themes";
 import { Loan } from "@prisma/client";
-import { ExtendedLoan, LoanQuery } from "../../types/ExtendedLoan";
+import { ExtendedLoan, LoanQuery } from "../../../types/ExtendedLoan";
 import classNames from "classnames";
-import { Badge } from "../../components/ui/badge";
-import { Button } from "../../components/ui/button";
+import { Badge } from "../../../components/ui/badge";
+import { Button } from "../../../components/ui/button";
 import {
   Table,
   TableBody,
@@ -16,17 +16,25 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../../components/ui/table";
-import { CreatLoanDialog } from "./createLoanModal";
-const LoansTable: React.FC = () => {
-  const { data, loading, error } = useQuery<LoanQuery>(GET_LOANS, {
-    fetchPolicy: "cache-and-network",
-  });
+} from "../../../components/ui/table";
+import { CreatLoanDialog } from "../createLoanModal";
+import { useRouter } from "next/router";
+import { equal } from "assert";
 
-  //   const cellClass = classNames({
-  //     'bg-yellow-300 rounded-md': loan.status === 'PENDING',
-  //     'bg-green-300 rounded-md': loan.status === 'RETURNED',
-  //   });
+const LoansUserTable: React.FC = () => {
+  const router = useRouter();
+
+  const { query } = router;
+  const { data, loading, error } = useQuery<LoanQuery>(GET_LOANS_BY_USER, {
+    fetchPolicy: "cache-and-network",
+    variables: {
+      where: {
+        userId: {
+          equals:query.userId
+        }
+      },
+    }
+  });
 
   console.log(data);
   return (
@@ -43,7 +51,7 @@ const LoansTable: React.FC = () => {
               <CreatLoanDialog></CreatLoanDialog>
             </div>
             <div className="border-2 border-gray-400 rounded-md shadow-border ">
-              <Table >
+              <Table>
                 <TableCaption>A list of Loans</TableCaption>
                 <TableHeader>
                   <TableRow>
@@ -65,7 +73,6 @@ const LoansTable: React.FC = () => {
                       <TableCell>{loan.id}</TableCell>
                       <TableCell>{loan.user.name}</TableCell>
                       <TableCell>{loan.book.title}</TableCell>
-                      
                       <TableCell>
                         <Badge
                           className={
@@ -91,4 +98,4 @@ const LoansTable: React.FC = () => {
   );
 };
 
-export default LoansTable;
+export default LoansUserTable;

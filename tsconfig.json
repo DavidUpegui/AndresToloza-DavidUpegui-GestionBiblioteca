@@ -19,6 +19,6 @@
     },
     "types": ["node", "jest", "@testing-library/jest-dom"]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/change-status-cell/index.tss"],
   "exclude": ["node_modules"]
 }
