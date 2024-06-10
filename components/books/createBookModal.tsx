@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_BOOK_MUTATION } from "../../graphql/mutations/book";
 
-import { ComboboxUsers } from "../../components/user-combobox/combo";
-import { Button } from "../../components/ui/button";
+import { ComboboxUsers } from "../user-combobox/combo";
+import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
 import {
   Dialog,
@@ -13,13 +13,13 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../../components/ui/dialog";
-import { Input } from "../../components/ui/input";
-import { Label } from "../../components/ui/label";
-import { ComboboxBooks } from "../../components/book-combobox/combo";
+} from "../ui/dialog";
+import { Input } from "../ui/input";
+import { Label } from "../ui/label";
+import { ComboboxBooks } from "../book-combobox/combo";
 import { CREATE_LOAN } from "../../graphql/mutations/loan";
-import { useToast } from "../../components/ui/use-toast";
-import { Toaster } from "../../components/ui/toaster";
+import { useToast } from "../ui/use-toast";
+import { Toaster } from "../ui/toaster";
 import classNames from "classnames";
 import { Spinner } from "@radix-ui/themes";
 import { GET_BOOKS } from "../../graphql/queries/book";

@@ -4,18 +4,35 @@ import "@/styles/globals.css";
 import { ApolloProvider } from "@apollo/client";
 import Sidebar from "./sidebar";
 import "@radix-ui/themes/styles.css";
-import { SessionProvider } from "next-auth/react";
+import { SessionProvider, useSession } from "next-auth/react";
 import Layout from "@/components/Layout";
 
-const App = ({ Component, pageProps: { session, ...pageProps } }: any) => {
+const App = ({
+	Component,
+	pageProps: { session, ...pageProps },
+	...appProps
+}: any) => {
+	if ([`/login`].includes(appProps.router.pathname))
+		return (
+			<ApolloProvider client={client}>
+				<SessionProvider>
+					<div className="flex-1 pg-4">
+						<Component {...pageProps} />
+					</div>
+				</SessionProvider>
+			</ApolloProvider>
+		);
+
 	return (
 		<ApolloProvider client={client}>
 			<SessionProvider>
+				<div className="flex w-full">
 					<Layout>
-						<div className="flex-1 pg-4">
+						<div className="">
 							<Component {...pageProps} />
 						</div>
 					</Layout>
+				</div>
 			</SessionProvider>
 		</ApolloProvider>
 	);

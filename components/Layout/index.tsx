@@ -6,9 +6,11 @@ interface Props {
 }
 const Layout = ({ children }: Props) => {
 	return (
-		<div className="flex">
-			<SideHeader />
-			<div>{children}</div>
+		<div className="flex w-full">
+			<div className="w-1/6">
+				<SideHeader />
+			</div>
+			<div className=" flex-1 w-full">{children}</div>
 		</div>
 	);
 };
