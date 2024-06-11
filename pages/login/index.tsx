@@ -28,7 +28,7 @@ function Home() {
 						className="font-semibold bg-blue-700 rounded-md text-white px-3 py-2 m-5 hover:bg-blue-800"
 						onClick={() => {
 							signIn("auth0", {
-								callbackUrl: '/login'
+								callbackUrl: '/'
 							});
 						}}
 					>
